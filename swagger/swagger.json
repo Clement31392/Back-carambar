@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Blagues API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/blagues": {
+      "get": {
+        "summary": "Liste toutes les blagues",
+        "responses": {
+          "200": {
+            "description": "Succès"
+          }
+        }
+      },
+      "post": {
+        "summary": "Ajoute une blague",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Blague créée"
+          }
+        }
+      }
+    },
+    "/api/v1/blagues/{id}": {
+      "get": {
+        "summary": "Récupère une blague par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succès"
+          },
+          "404": {
+            "description": "Non trouvée"
+          }
+        }
+      }
+    },
+    "/api/v1/blagues/random": {
+      "get": {
+        "summary": "Récupère une blague aléatoire",
+        "responses": {
+          "200": {
+            "description": "Succès"
+          }
+        }
+      }
+    }
+  }
+}
