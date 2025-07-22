@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const jokeController = require('../controllers/jokeController');
+import jokeController from '../controllers/jokeController';
 
 router.post('/', jokeController.createJoke);
 router.get('/', jokeController.getAllJokes);
@@ -50,4 +50,6 @@ exports.getRandomJoke = async (req, res) => {
         res.status(500).json({ message: "Erreur lors de l'ajout de la blague." });
     }
 };
+
+export default jokeController;
 

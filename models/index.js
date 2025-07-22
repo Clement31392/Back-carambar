@@ -1,5 +1,5 @@
-const { Sequelize } = require('sequelize');
-const config = require('../config/config').development;
+import { Sequelize } from 'sequelize';
+import config from '../config/config'; development;
 
 const sequelize = new Sequelize(config);
 
@@ -8,4 +8,4 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.Joke = require('./joke')(sequelize, Sequelize);
 
-module.exports = db;
+export default db;

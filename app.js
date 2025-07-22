@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger/swagger.json');
-const jokeRoutes = require('./routes/jokeRoutes');
-const db = require('./models');
+import express from 'express';
+import bodyParser from 'body-parser';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger/swagger.json';
+import jokeRoutes from './routes/jokeRoutes';
+import db from './models';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -41,3 +41,5 @@ const { Joke } = require('./models');
         console.log("Blagues initiales insérées.");
     }
 })();
+
+export default app;
