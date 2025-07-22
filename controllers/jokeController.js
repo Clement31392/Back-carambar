@@ -1,3 +1,17 @@
+const express = require('express');
+const router = express.Router();
+const jokeController = require('../controllers/jokeController');
+
+router.post('/', jokeController.createJoke);
+router.get('/', jokeController.getAllJokes);
+router.get('/random', jokeController.getRandomJoke);
+router.get('/:id', jokeController.getJokeById);
+
+module.exports = router;
+controllers / jokeController.js
+js
+Copier
+Modifier
 const { Joke } = require('../models');
 
 exports.createJoke = async (req, res) => {
@@ -23,4 +37,17 @@ exports.getRandomJoke = async (req, res) => {
     const jokes = await Joke.findAll();
     const random = jokes[Math.floor(Math.random() * jokes.length)];
     res.json(random);
+}; exports.addJoke = async (req, res) => {
+    try {
+        const { content } = req.body;
+        if (!content) {
+            return res.status(400).json({ message: "Le champ 'content' est requis." });
+        }
+
+        const newJoke = await Joke.create({ content });
+        res.status(201).json(newJoke);
+    } catch (error) {
+        res.status(500).json({ message: "Erreur lors de l'ajout de la blague." });
+    }
 };
+
